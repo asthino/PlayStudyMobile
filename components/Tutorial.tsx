@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View} from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
 import { useState} from 'react';
 import AnimatedDot from './AnimatedDot';
+import DragIndicator from './DragIndicator';
 
 export default function Tutorial(props : any) {
     const [index, setIndex] = useState<number>(0);
@@ -24,7 +25,7 @@ export default function Tutorial(props : any) {
 
     return (
     <View style={[styles.container, props.style]}>
-        <View style={styles.separator} />
+        <DragIndicator />
         <Text style={styles.title}>Apprenez l’anglais tout en s’amusant !</Text>
         <Text style={styles.subTitle}>{tutorial[index]}</Text>
         <AnimatedDot number={tutorial.length} active={index} style={{ bottom: 150 }} />
@@ -53,14 +54,6 @@ const styles = StyleSheet.create({
       paddingTop: 50,
       width: '100%',
       backgroundColor: '#3444F1'
-    },
-    separator: {
-        position:'absolute',
-        height: 4,
-        width: 70,
-        backgroundColor: '#FFEDDA',
-        borderRadius: 100,
-        margin: 15
     },
     title: {
         color: '#fff',

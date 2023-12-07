@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native';
+import { View } from '../../components/Themed';
+import BagdeView from '../../components/BagdeView';
+import { StatusBar } from 'expo-status-bar';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
-
-export default function TabTwoScreen() {
+export default function BadgesSreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+    <View lightColor='#fff' style={styles.container}>
+      <StatusBar style='dark' />
+      <BagdeView  title='Université' subTitle="L'ensemble de vos études et cours" style={{ backgroundColor: '#3444F1' }} />
+      <BagdeView  title='Université' subTitle="L'ensemble de vos études et cours" style={{ backgroundColor: '#FF8504' }} />
+      <BagdeView  title='Université' subTitle="L'ensemble de vos études et cours" style={{ backgroundColor: '#DD246E' }} />
+      <BagdeView  title='Université' subTitle="L'ensemble de vos études et cours" style={{ backgroundColor: '#3444F1' }} />
+      <BagdeView  title='Université' subTitle="L'ensemble de vos études et cours" style={{ backgroundColor: '#FF8504' }} />
     </View>
   );
 }
@@ -16,16 +19,13 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 20
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

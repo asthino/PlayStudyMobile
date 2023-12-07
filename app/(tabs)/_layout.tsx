@@ -26,6 +26,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
         tabBarStyle: {
           backgroundColor: Colors[colorScheme ?? 'light'].tabBackgroundColor,
           height: 83,
@@ -56,7 +57,12 @@ export default function TabLayout() {
       <Tabs.Screen
         name="badge"
         options={{
-          headerShown:false,
+          headerTitle: "Badges remportés",
+          headerTitleStyle: {
+            fontFamily: 'PopinsRegular',
+            fontSize: 18
+          },
+          headerTitleAlign: 'center',
           tabBarLabelStyle: {
             bottom: 15
           },

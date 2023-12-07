@@ -18,6 +18,8 @@ export const unstable_settings = {
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     PopinsMedium: require('../assets/fonts/Poppins-Medium.ttf'),
+    PopinsRegular: require('../assets/fonts/Poppins-Regular.ttf'),
+    PopinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
     ...FontAwesome.font,
   });
 
