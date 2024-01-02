@@ -18,8 +18,8 @@ export default function ExercisesSreen() {
       <DefaultView style={styles.containerEarning}><View lightColor='#fff' style={styles.earnings}><Coin style={{position: 'absolute', left: -10}}/><Text lightColor='#616161' style={{fontSize: 10}}>150+</Text></View></DefaultView>
       <DefaultView style={styles.upperPart}>
         <DefaultView style={{ width: '60%'}}>
-          <DefaultText style={{color: "#fff", fontWeight: 'bold', paddingVertical: 20, fontSize:24}}>Bonjour, Asthino</DefaultText>
-          <DefaultText style={{color: "#fff", fontSize:13}}>Quelle thématique aimerais-tu choisir ?</DefaultText>
+          <DefaultText style={{color: "#fff", fontFamily: 'PopinsMedium', paddingVertical: 20, fontSize:24}}>Bonjour, Asthino</DefaultText>
+          <DefaultText style={{color: "#fff", fontSize:13, fontFamily: 'PopinsRegular'}}>Quelle thématique aimerais-tu choisir ?</DefaultText>
         </DefaultView>
         <Astronot />
       </DefaultView>
