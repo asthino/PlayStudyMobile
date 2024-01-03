@@ -7,7 +7,7 @@ export default function Thematique(props: { title : string, style?: {},  progres
       <View lightColor='#fff' style={[styles.container,styles.container, props.style]}>
         <DefaultView style={{gap : 10}}>
           <Text lightColor='#000' style={{fontSize: 14}}>{props.title}</Text>
-          <Progressbar value={props.progress ?? 0} barColor="rgba(56, 239, 125, 1)" style={{width: '80%'}} />
+          <Progressbar type="rectangular" value={props.progress ?? 0} barColor="rgba(56, 239, 125, 1)" style={{width: '80%'}} />
         </DefaultView>
         {props.icon}
       </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, SafeAreaView, TextInput, Pressable } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, TextInput, Pressable, Image } from 'react-native';
 import ProfileForme from '../../assets/images/profile-forme.svg';
 import Avartar1 from '../../assets/images/avatar1.svg';
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
@@ -19,13 +19,16 @@ export default function TabTwoScreen() {
       </View>
       <View style={{flex:0.4, top: "20%"}}>
         <View style={styles.avatar}>
-          <Avartar1 width={148} height={148}/>
+          <Image
+            style={styles.avatarImage}
+            source={require('../../assets/images/profile.jpg')}
+          />
           <View style={styles.editBtn}>
             <FontAwesome name="pen" size={16} color="#fff"/>
           </View>
         </View>
       </View>
-      <View style={{flex: 0.1}}>
+      <View style={{flex: 0.1, alignItems: "center"}}>
         <Text style={{ fontFamily: 'PopinsBold', fontSize: 20, color: "#263238" }}>Asthino</Text>
         <Text style={{ fontFamily: 'PopinsRegular', fontSize: 18, color: "#898989" }}>Étudiant</Text>
       </View>
@@ -123,6 +126,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#000",
     alignItems:"center",
+  },
+  avatarImage: {
+    height: 147,
+    width: 147,
+    borderRadius: 100
   },
   editBtn: {
     alignItems:"center", 
