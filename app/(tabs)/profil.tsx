@@ -18,21 +18,21 @@ export default function TabTwoScreen() {
     <View style={styles.container}>
       <StatusBar style='light' />
       <View style={styles.forme}>
-        <ProfileForme width={430} height={430}/>
+        <ProfileForme width={470} height={520} style={{ top: -190, left: -50 }}/>
       </View>
-      <View style={{flex:0.4, top: "20%"}}>
+      <View style={{flex:0.4, top: 30}}>
         <View style={styles.avatar}>
-          <AvatarImage size={148} avatarImageSource={avatarImage}/>
+          <AvatarImage size={120} avatarImageSource={avatarImage}/>
           <View style={styles.editBtn}>
-            <FontAwesome name="pen" size={16} color="#fff"/>
+            <FontAwesome name="pen" size={12} color="#fff"/>
           </View>
         </View>
+        <View style={{alignItems: "center",top: -10}}>
+          <Text style={{ fontFamily: 'PopinsMedium', fontSize: 16, color: "#263238" }}>Asthino</Text>
+          <Text style={{ fontFamily: 'PopinsRegular', fontSize: 13, color: "#898989" }}>Étudiant</Text>
+        </View>
       </View>
-      <View style={{flex: 0.1, alignItems: "center"}}>
-        <Text style={{ fontFamily: 'PopinsBold', fontSize: 20, color: "#263238" }}>Asthino</Text>
-        <Text style={{ fontFamily: 'PopinsRegular', fontSize: 18, color: "#898989" }}>Étudiant</Text>
-      </View>
-      <View style={{flex: 0.4, alignItems: "flex-start", display: 'flex', flexDirection: 'column', gap: 15,width: '100%', paddingHorizontal: 20}}>
+      <View style={{flex: 0.5, alignItems: "flex-start", display: 'flex', flexDirection: 'column', gap: 20,width: '100%', paddingHorizontal: 20}}>
         <SafeAreaView style={styles.inputContainer}>
           <Text style={{ fontSize: 14, color: "#898989", fontFamily: 'PopinsRegular'}}>Nom</Text>
           <TextInput
@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    top: -15,
     height: 45,
     width: '100%'
   },
@@ -132,13 +131,13 @@ const styles = StyleSheet.create({
   editBtn: {
     alignItems:"center", 
     justifyContent: "center", 
-    width:40, 
-    height:40, 
+    width:30, 
+    height:30, 
     borderRadius: 50,
     borderWidth: 2, 
     borderColor: "#fff",
     backgroundColor: "#3972FE",
-    top: -50,
-    left: "40%"
+    top: -30,
+    left: "30%"
   }
 });

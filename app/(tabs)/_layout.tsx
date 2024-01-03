@@ -87,10 +87,30 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profil"
         options={{
-          headerShown:false,
+          headerTitle: "Profil",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontFamily: 'PopinsRegular',
+            fontSize: 18,
+            color: "#fff"
+          },
+          headerStyle: {
+            backgroundColor: "#3444F1",
+            elevation: 0
+          },
           tabBarLabelStyle: {
             bottom: 15
           },
+          headerLeft: () => (
+            <Pressable onPress={()=>{}} style={{alignItems:"center", justifyContent:"center", marginLeft: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
+              <Entypo name="chevron-thin-left" color="#263238" size={20}/>
+            </Pressable>
+          ),
+          headerRight: () => (
+            <Pressable onPress={()=>{}} style={{alignItems:"center", justifyContent:"center", marginRight: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
+              <Entypo name="dots-three-vertical" color="#263238" size={20}/>
+            </Pressable>
+          ),
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
