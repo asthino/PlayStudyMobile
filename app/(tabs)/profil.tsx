@@ -1,8 +1,9 @@
 import { StyleSheet, View, Text, SafeAreaView, TextInput, Pressable, Image } from 'react-native';
 import ProfileForme from '../../assets/images/profile-forme.svg';
-import Avartar1 from '../../assets/images/avatar1.svg';
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
 import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import AvatarImage from '../../components/AvatarImage';
 // import { Text } from '../../components/Themed';
 
 export default function TabTwoScreen() {
@@ -12,17 +13,16 @@ export default function TabTwoScreen() {
   const [emailValue, onChangeEmailValue] = useState('astty@playmail.com');
   const [passwordValue, onChangePasswordValue] = useState('123456');
   const [ageValue, onChangeAgeValue] = useState('23');
+  const avatarImage = require('../../assets/images/profile.jpg');
   return (
     <View style={styles.container}>
+      <StatusBar style='light' />
       <View style={styles.forme}>
         <ProfileForme width={430} height={430}/>
       </View>
       <View style={{flex:0.4, top: "20%"}}>
         <View style={styles.avatar}>
-          <Image
-            style={styles.avatarImage}
-            source={require('../../assets/images/profile.jpg')}
-          />
+          <AvatarImage size={148} avatarImageSource={avatarImage}/>
           <View style={styles.editBtn}>
             <FontAwesome name="pen" size={16} color="#fff"/>
           </View>
@@ -120,17 +120,14 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   avatar: {
-    width:150,
-    height:150,
-    borderRadius: 100,
-    borderWidth: 2,
-    borderColor: "#000",
     alignItems:"center",
   },
   avatarImage: {
     height: 147,
     width: 147,
-    borderRadius: 100
+    borderRadius: 100,
+    borderWidth: 2,
+    borderColor: "#000",
   },
   editBtn: {
     alignItems:"center", 

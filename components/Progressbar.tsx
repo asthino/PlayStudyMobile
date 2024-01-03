@@ -39,7 +39,7 @@ export default function Progressbar(props : {type?: string, value : number, styl
                 
                 <Circle
                     fill="none"
-                    stroke="#ddd"
+                    stroke={props.trackColor ?? "#ddd"}
                     cx={sqSize / 2}
                     cy={sqSize / 2}
                     r={radius}

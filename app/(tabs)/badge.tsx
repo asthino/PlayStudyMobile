@@ -13,7 +13,7 @@ export default function BadgesSreen() {
         <View lightColor='#fff' style={styles.container}> 
           <DefaultView style={styles.progressContainer}>
             <DefaultView style={styles.progressLogo}>
-              <Progressbar type="circular" sqSize={90} value={75} barColor='#69B85E' valueColor='#000'/>
+              <Progressbar type="circular" sqSize={90} value={80} barColor='#69B85E' trackColor='#fff' valueColor='#000'/>
             </DefaultView>
             <DefaultView style={{ flex: 0.8}} >
                 <DefaultText style={[styles.item, {fontSize:18, fontWeight: 'bold'}]}>Total de badges : 20</DefaultText>

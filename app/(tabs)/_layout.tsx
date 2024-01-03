@@ -1,6 +1,6 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome5';
+import { FontAwesome5, Entypo } from '@expo/vector-icons';
 import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Button, Pressable, useColorScheme } from 'react-native';
 
 import Colors from '../../constants/Colors';
 
@@ -13,10 +13,10 @@ export const unstable_settings = {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome5>['name'];
   color: string;
 }) {
-  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome5 size={25} style={{ marginBottom: -3 }} {...props} />;
 }
 
 export default function TabLayout() {
@@ -47,10 +47,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="visio"
         options={{
-          headerShown:false,
+          headerTitle: "Visio",
+          headerTitleStyle: {
+            fontFamily: 'PopinsRegular',
+            fontSize: 18
+          },
+          headerTitleAlign: 'center',
           tabBarLabelStyle: {
             bottom: 15
           },
+          headerLeft: () => (
+            <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
+              <Entypo name="chevron-thin-left" color="#263238" size={30}/>
+            </Pressable>
+          ),
           tabBarIcon: ({ color }) => <TabBarIcon name="video" color={color} />,
         }}
       />
@@ -62,6 +72,11 @@ export default function TabLayout() {
             fontFamily: 'PopinsRegular',
             fontSize: 18
           },
+          headerLeft: () => (
+            <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
+              <Entypo name="chevron-thin-left" color="#263238" size={30}/>
+            </Pressable>
+          ),
           headerTitleAlign: 'center',
           tabBarLabelStyle: {
             bottom: 15
