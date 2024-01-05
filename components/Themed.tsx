@@ -6,6 +6,9 @@
 import { Text as DefaultText, useColorScheme, View as DefaultView, StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
+import { StatusBar as DefaultStatusBar, StatusBarProps } from 'expo-status-bar';
+import { StatusBarStyle } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -43,6 +46,16 @@ export function View(props: ViewProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+}
+
+export function StatusBar(props: {style?: StatusBarStyle, updater?: any}) {
+  const [mode, setMode] = useState<StatusBarStyle|undefined>("dark" as StatusBarStyle);
+  useEffect(() => {
+    setMode(props?.style);
+    console.log(props.updater);
+    return;
+  }, [props.updater]);
+  return <DefaultStatusBar style={mode} />
 }
 
 const styles = StyleSheet.create({

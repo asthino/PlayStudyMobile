@@ -1,14 +1,13 @@
-import { StyleSheet, View as DefaultView, Text as DefaultText, ScrollView } from 'react-native';
-import { View, Text } from '../../components/Themed';
+import { StyleSheet, View as DefaultView, Text as DefaultText, ScrollView, StatusBarStyle } from 'react-native';
+import { View, Text, StatusBar } from '../../components/Themed';
 import BagdeView from '../../components/BagdeView';
-import { StatusBar } from 'expo-status-bar';
 import Progressbar from '../../components/Progressbar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function BadgesSreen() {
+
+export default function BadgesSreen(props : { segment : string }) {
   return (
     <SafeAreaView style={[styles.container, { padding: 0 }]} edges={['bottom', 'left', 'right']}>
-      <StatusBar style='dark' />
       <ScrollView style={{width: '100%'}} showsVerticalScrollIndicator={false}>
         <View lightColor='#fff' style={styles.container}> 
           <DefaultView style={styles.progressContainer}>

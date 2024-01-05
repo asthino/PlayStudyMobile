@@ -6,3 +6,8 @@ export interface User {
     disponibility: Disponibility,
     avatarImage: undefined|ImageSourcePropType
 }
+
+export interface ThemeContextType {
+    mode: string,
+    statusBar: string
+}

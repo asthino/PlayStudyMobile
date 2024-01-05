@@ -1,5 +1,14 @@
+import { StatusBarStyle } from "expo-status-bar";
+
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
+
+export const statusBarStyles : { [screen: string] : StatusBarStyle } = {
+  "badge": "dark",
+  "exercises": "light",
+  "profil": "light",
+  "visio": "dark"
+}
 
 export default {
   light: {

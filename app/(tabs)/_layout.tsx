@@ -1,8 +1,11 @@
 import { FontAwesome5, Entypo } from '@expo/vector-icons';
-import { Link, Tabs } from 'expo-router';
-import { Button, Pressable, useColorScheme } from 'react-native';
+import { Tabs, useNavigation } from 'expo-router';
+import { Pressable, useColorScheme } from 'react-native';
 
-import Colors from '../../constants/Colors';
+import Colors, { statusBarStyles } from '../../constants/Colors';
+import { useEffect, useState } from 'react';
+import { StatusBar, StatusBarStyle } from 'expo-status-bar';
+import { EventMapCore } from '@react-navigation/native';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -21,9 +24,14 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const [barStyle, setBarStyle] = useState<StatusBarStyle | undefined>("light");
   return (
+    <>
+    <StatusBar style={barStyle}/>
     <Tabs
+      screenListeners={{
+        tabPress:(e : any) => { setBarStyle(statusBarStyles[e.target.split("-")[0]]) }
+      }}
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].tabIconDefault,
@@ -58,10 +66,16 @@ export default function TabLayout() {
           },
           headerLeft: () => (
             <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
-              <Entypo name="chevron-thin-left" color="#263238" size={30}/>
+              <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
           tabBarIcon: ({ color }) => <TabBarIcon name="video" color={color} />,
+          href: {
+            pathname: '/visio',
+            params: {
+              barStyle: (barStyle : StatusBarStyle) => setBarStyle(barStyle)
+            },
+          },
         }}
       />
       <Tabs.Screen
@@ -74,7 +88,7 @@ export default function TabLayout() {
           },
           headerLeft: () => (
             <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
-              <Entypo name="chevron-thin-left" color="#263238" size={30}/>
+              <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
           headerTitleAlign: 'center',
@@ -115,5 +129,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </>
   );
 }

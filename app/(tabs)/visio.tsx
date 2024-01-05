@@ -1,10 +1,9 @@
 import { StyleSheet, SafeAreaView, ScrollView} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import { User } from '../../services/Interfaces';
 import { Disponibility } from '../../services/Enums';
-import { useEffect } from 'react';
 import UserVisio from '../../components/UserVisio';
-export default function TabTwoScreen() {
+
+export default function VisioScreen() {  
   const arrayUsers: Array<User> = [
     {name:"Manon", disponibility: Disponibility["A"], avatarImage: undefined},
     {name:"Robert", disponibility: Disponibility["A"], avatarImage: undefined},
@@ -18,7 +17,6 @@ export default function TabTwoScreen() {
   return (
     <SafeAreaView style={[styles.container, { padding: 0 }]}>
       <ScrollView style={{width: '100%', paddingHorizontal: 20}} showsVerticalScrollIndicator={false}>{userListe}</ScrollView>
-      <StatusBar style='dark' />
     </SafeAreaView>
   );
 }

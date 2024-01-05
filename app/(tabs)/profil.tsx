@@ -2,11 +2,9 @@ import { StyleSheet, View, Text, SafeAreaView, TextInput, Pressable, Image } fro
 import ProfileForme from '../../assets/images/profile-forme.svg';
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import AvatarImage from '../../components/AvatarImage';
-// import { Text } from '../../components/Themed';
 
-export default function TabTwoScreen() {
+export default function ProfilScreen(props : { segment : string }) {
   const [hidePassword, setHidePassWord] = useState<boolean>(true);
   const [nameValue, onChangeNameValue] = useState('Asthino');
   const [pseudoValue, onChangePseudoValue] = useState('Astty');
@@ -16,7 +14,6 @@ export default function TabTwoScreen() {
   const avatarImage = require('../../assets/images/profile.jpg');
   return (
     <View style={styles.container}>
-      <StatusBar style='light' />
       <View style={styles.forme}>
         <ProfileForme width={470} height={520} style={{ top: -190, left: -50 }}/>
       </View>
