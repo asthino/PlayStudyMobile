@@ -2,6 +2,7 @@ import { StyleSheet, SafeAreaView, ScrollView} from 'react-native';
 import { User } from '../../services/Interfaces';
 import { Disponibility } from '../../services/Enums';
 import UserVisio from '../../components/UserVisio';
+import { useEffect, useState } from 'react';
 
 export default function VisioScreen() {  
   const arrayUsers: Array<User> = [
@@ -13,7 +14,15 @@ export default function VisioScreen() {
     {name:"Jean", disponibility: Disponibility["C"], avatarImage: undefined},
     {name:"Martin", disponibility: Disponibility["A"], avatarImage: undefined},
   ];
-  const userListe : Array<JSX.Element> = arrayUsers.map((user, index) => <UserVisio key={index} user={user} />);
+  const [clickedUser, setClickedUser] = useState<User | undefined>(undefined);
+
+  useEffect(() => {
+    if (clickedUser !== undefined) {
+      console.log(clickedUser);
+    }
+  }, [clickedUser]);
+
+  const userListe : Array<JSX.Element> = arrayUsers.map((user, index) => <UserVisio key={index} user={user} onPress={() => setClickedUser(user)} />);
   return (
     <SafeAreaView style={[styles.container, { padding: 0 }]}>
       <ScrollView style={{width: '100%', paddingHorizontal: 20}} showsVerticalScrollIndicator={false}>{userListe}</ScrollView>

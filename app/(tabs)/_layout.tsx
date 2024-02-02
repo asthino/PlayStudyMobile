@@ -1,11 +1,10 @@
 import { FontAwesome5, Entypo } from '@expo/vector-icons';
-import { Tabs, useNavigation } from 'expo-router';
+import { Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
 import Colors, { statusBarStyles } from '../../constants/Colors';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StatusBar, StatusBarStyle } from 'expo-status-bar';
-import { EventMapCore } from '@react-navigation/native';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.

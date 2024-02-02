@@ -1,22 +1,26 @@
-import {View, Text, StyleSheet, ImageSourcePropType} from 'react-native';
+import {View, Text, StyleSheet, ImageSourcePropType, TouchableHighlight} from 'react-native';
 import AvatarImage from './AvatarImage';
 import { User } from '../services/Interfaces';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default function UserVisio(props: { style?: {}, user: User}) {
+export default function UserVisio(props: { style?: {}, user: User, onPress?: () => void}) {
     const defaultAvatarImageSource = require('../assets/images/notFoundUserImage.png');
     return (
     <View style={[styles.container, props.style]}>
-        <View style={styles.avatar}>
-            <AvatarImage size={53} avatarImageSource={props.user.avatarImage ?? defaultAvatarImageSource} />
-        </View>
-        <View style={{ flex: 0.7}} >
-            <Text style={{fontSize:16, fontFamily: 'PopinsBold', color: "#263238" }}>{props.user.name}</Text>
-            <Text style={{fontSize:14, fontFamily: 'PopinsRegular', color: "#3444F1"}}>{props.user.disponibility}</Text>
-        </View>
-        <View style={{width: 35, height: 35, borderRadius: 100, backgroundColor: "#4D4D4D", alignItems:"center", justifyContent: "center"}}>
-            <FontAwesome name="chevron-right" color="#fff" size={15}/>
-        </View>
+        {/* <TouchableHighlight onPress={props.onPress} underlayColor="white">
+            <> */}
+                <View style={styles.avatar}>
+                    <AvatarImage size={53} avatarImageSource={props.user.avatarImage ?? defaultAvatarImageSource} />
+                </View>
+                <View style={{ flex: 0.7}} >
+                    <Text style={{fontSize:16, fontFamily: 'PopinsBold', color: "#263238" }}>{props.user.name}</Text>
+                    <Text style={{fontSize:14, fontFamily: 'PopinsRegular', color: "#3444F1"}}>{props.user.disponibility}</Text>
+                </View>
+                <View style={{width: 35, height: 35, borderRadius: 100, backgroundColor: "#4D4D4D", alignItems:"center", justifyContent: "center"}}>
+                    <FontAwesome name="chevron-right" color="#fff" size={15}/>
+                </View>
+            {/* </>
+        </TouchableHighlight> */}
     </View>
   )
 }

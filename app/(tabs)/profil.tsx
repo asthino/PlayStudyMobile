@@ -4,7 +4,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome5';
 import React, { useState } from 'react';
 import AvatarImage from '../../components/AvatarImage';
 
-export default function ProfilScreen(props : { segment : string }) {
+export default function ProfilScreen(props : {user? : object}) {
   const [hidePassword, setHidePassWord] = useState<boolean>(true);
   const [nameValue, onChangeNameValue] = useState('Asthino');
   const [pseudoValue, onChangePseudoValue] = useState('Astty');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, DimensionValue } from 'react-native';
 import Svg, { Circle, Text as SvgText } from 'react-native-svg';
 
 export default function Progressbar(props : {type?: string, value : number, style? : {}, barColor?: string, valueColor?: string, trackColor?: string, strokeWidth? : number, sqSize?: number }) : JSX.Element {
@@ -10,7 +10,7 @@ export default function Progressbar(props : {type?: string, value : number, styl
         return (
         <View style={[styles.container, props.style]}>
             <View style={[styles.track, { backgroundColor : props.trackColor ?? '#f2f2f2' }]}>
-                <View style={[styles.bar, { backgroundColor : props.barColor ?? '#000', width: props.value ? props.value+'%' : '0%'}]}></View>
+                <View style={[styles.bar, { backgroundColor: (props.barColor ?? '#fff'), width: (props.value ? props.value+'%' : '0%') as DimensionValue }]}></View>
             </View>
         <Text>{props.value + '%'}</Text>
         </View>
@@ -46,7 +46,8 @@ export default function Progressbar(props : {type?: string, value : number, styl
                     strokeWidth={strokeWidth}
                     />
                 <Circle
-                    stroke={props.barColor ?? "#000"}
+                    fill="none"
+                    stroke={props.barColor ?? "#fff"}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     cx={sqSize / 2}
