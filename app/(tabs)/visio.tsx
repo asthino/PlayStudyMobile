@@ -1,28 +1,43 @@
 import { StyleSheet, SafeAreaView, ScrollView} from 'react-native';
 import { User } from '../../services/Interfaces';
 import { Disponibility } from '../../services/Enums';
+import arrayUsers from '../../constants/temp/Users';
 import UserVisio from '../../components/UserVisio';
-import { useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
+import { router, usePathname } from 'expo-router';
+import { useUsers } from '../../components/UsersContext';
 
-export default function VisioScreen() {  
-  const arrayUsers: Array<User> = [
-    {name:"Manon", disponibility: Disponibility["A"], avatarImage: undefined},
-    {name:"Robert", disponibility: Disponibility["A"], avatarImage: undefined},
-    {name:"Vincent", disponibility: Disponibility["B"], avatarImage: undefined},
-    {name:"Elisa", disponibility: Disponibility["A"], avatarImage: undefined},
-    {name:"Julie", disponibility: Disponibility["A"], avatarImage: undefined},
-    {name:"Jean", disponibility: Disponibility["C"], avatarImage: undefined},
-    {name:"Martin", disponibility: Disponibility["A"], avatarImage: undefined},
-  ];
+export default function VisioScreen() {
+  const { state, dispatch } = useUsers();
   const [clickedUser, setClickedUser] = useState<User | undefined>(undefined);
+  const [userListe, setUserListe] = useState<Array<JSX.Element>>([]);
+  let users = [];
+  
+  const fetchUsers = async () => {
+    dispatch({ type: "USERS_PROCESS_REQUEST"});
+    if(state.users.length > 0) {
+      users = state.users;
+    }
+    // const response = await fetch('http://localhost:3000/users');
+    const response = { json: () => Promise.resolve(arrayUsers) };
+    users = await response.json();
+    dispatch({ type: "USERS_FETCH", payload: users });
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  
+  useEffect(() => {
+    setUserListe(state.users.map((user: User, index: Key | null | undefined) => <UserVisio key={index} user={user} onPress={() => setClickedUser(user)} />));
+  }, [state.users]);
 
   useEffect(() => {
     if (clickedUser !== undefined) {
-      console.log(clickedUser);
+      router.push({ pathname: 'user/' + clickedUser.id });
     }
   }, [clickedUser]);
 
-  const userListe : Array<JSX.Element> = arrayUsers.map((user, index) => <UserVisio key={index} user={user} onPress={() => setClickedUser(user)} />);
   return (
     <SafeAreaView style={[styles.container, { padding: 0 }]}>
       <ScrollView style={{width: '100%', paddingHorizontal: 20}} showsVerticalScrollIndicator={false}>{userListe}</ScrollView>

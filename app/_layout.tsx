@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { Stack } from 'expo-router';
+import { UsersProvider } from '../components/UsersContext';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -41,11 +42,15 @@ function RootLayoutNav() {
   return (
     <>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="register" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
+        <UsersProvider>
+            <Stack>
+              <Stack.Screen name="index" options={{ headerShown: false }} />
+              <Stack.Screen name="register" options={{ headerShown: false }} />
+              <Stack.Screen name="user/[id]" options={{ headerShown: false }} />
+              <Stack.Screen name="user/message/[id]" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack>
+        </UsersProvider>
       </ThemeProvider>
     </>
   );

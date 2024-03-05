@@ -6,9 +6,8 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function UserVisio(props: { style?: {}, user: User, onPress?: () => void}) {
     const defaultAvatarImageSource = require('../assets/images/notFoundUserImage.png');
     return (
-    <View style={[styles.container, props.style]}>
-        {/* <TouchableHighlight onPress={props.onPress} underlayColor="white">
-            <> */}
+        <TouchableHighlight onPress={props.onPress} underlayColor="white">
+            <View style={[styles.container, props.style]}>
                 <View style={styles.avatar}>
                     <AvatarImage size={53} avatarImageSource={props.user.avatarImage ?? defaultAvatarImageSource} />
                 </View>
@@ -19,9 +18,8 @@ export default function UserVisio(props: { style?: {}, user: User, onPress?: () 
                 <View style={{width: 35, height: 35, borderRadius: 100, backgroundColor: "#4D4D4D", alignItems:"center", justifyContent: "center"}}>
                     <FontAwesome name="chevron-right" color="#fff" size={15}/>
                 </View>
-            {/* </>
-        </TouchableHighlight> */}
-    </View>
+            </View>
+        </TouchableHighlight>
   )
 }
 

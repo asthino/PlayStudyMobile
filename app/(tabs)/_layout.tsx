@@ -64,17 +64,11 @@ export default function TabLayout() {
             bottom: 15
           },
           headerLeft: () => (
-            <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
+            <Pressable style={{marginHorizontal: 20}}>
               <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
-          tabBarIcon: ({ color }) => <TabBarIcon name="video" color={color} />,
-          href: {
-            pathname: '/visio',
-            params: {
-              barStyle: (barStyle : StatusBarStyle) => setBarStyle(barStyle)
-            },
-          },
+          tabBarIcon: ({ color }) => <TabBarIcon name="video" color={color} />
         }}
       />
       <Tabs.Screen
