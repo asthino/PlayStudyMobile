@@ -1,9 +1,10 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
-import { View, Text, StyleSheet } from 'react-native'
+import { router } from 'expo-router';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function HistoriqueThematique(props: { title : string, style?: {},  level : number, lastExercise: number}) {
     return (
-      <View style={[styles.container,styles.container, props.style]}>
+      <TouchableOpacity onPress={() => router.push('game/list')} style={[styles.container,styles.container, props.style]}>
         <View>
             <View style={{ flexDirection: 'row'}}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>{props.title}</Text>
@@ -13,9 +14,9 @@ export default function HistoriqueThematique(props: { title : string, style?: {}
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={{color: 'white' }}>Reprendre l'exercice</Text>
-            <View  style={styles.btnGoExercise}><FontAwesome name="chevron-right" size={14} /></View>
+            <View style={styles.btnGoExercise}><FontAwesome name="chevron-right" size={14} /></View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
 }
 

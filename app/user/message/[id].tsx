@@ -3,14 +3,26 @@ import { useEffect, useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useUsers } from '../../../components/UsersContext';
 import { User } from '../../../services/Interfaces';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 import { Text, View } from '../../../components/Themed';
 import TopBarCustom from '../../../components/TopBarCustom';
+import { StatusBar } from 'expo-status-bar';
 
 export default function MessageScreen() {
     const params = useLocalSearchParams();
     const { state, dispatch } = useUsers();
     const [user, setUser] = useState<User | undefined>(undefined);
+
+    const rightButton : React.ReactNode = (
+      <View style={{ flexDirection: 'row', backgroundColor: '#fff', gap: 10 }}>
+        <Pressable onPress={() => {}}>
+            <Feather name="video" color="#263238" size={24} />
+        </Pressable>
+        <Pressable onPress={() => {}}>
+            <Feather name="phone-call" color="#263238" size={24} />
+        </Pressable>
+      </View>
+    );
 
     useEffect(() => {
         if (params.id !== undefined) {
@@ -19,8 +31,10 @@ export default function MessageScreen() {
     }, [params.id]);
 
     return (
+      <>
+        <StatusBar style="dark"/>
         <SafeAreaView style={styles.container}>
-          <TopBarCustom title={user?.name ?? ''} type="dark"/>
+          <TopBarCustom title={user?.name ?? ''} type="dark" rightButton={rightButton}/>
           <View style={{flex: 0.9, width: "100%", padding: 0, margin: 0, backgroundColor: '#fff'}}></View>
           <View style={{flex: 0.1, width: '100%', paddingHorizontal: 20, backgroundColor: '#fff'}}>
             <View style={styles.messageContainer}>
@@ -31,6 +45,7 @@ export default function MessageScreen() {
             </View>
           </View>
         </SafeAreaView>
+      </>
     );
 }
 

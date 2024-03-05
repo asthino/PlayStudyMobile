@@ -5,12 +5,13 @@ const UsersContext = createContext<any>({});
 
 const initialState = {
     users: [],
+    games: [],
     isLoading: false,
     error: null,
 };
 
 const usersReducer = (state: any, action: any) => {
-    switch (action.type) {
+    switch (action?.type) {
         case "USERS_PROCESS_REQUEST":
             return {
                 ...state,
@@ -33,6 +34,29 @@ const usersReducer = (state: any, action: any) => {
             return {
                 ...state,
                 users: [],
+            };
+        case "GAMES_PROCESS_REQUEST":
+            return {
+                ...state,
+                isLoading: true,
+                error: null,
+            };
+        case "GAMES_PROCESS_FAILURE":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload,
+            };
+        case "GAMES_FETCH":
+            return {
+                ...state,
+                isLoading: false,
+                games: action.payload,
+            };
+        case "GAMES_CLEAR":
+            return {
+                ...state,
+                games: [],
             };
         default:
             return state;

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, DimensionValue } from 'react-native';
 import Svg, { Circle, Text as SvgText } from 'react-native-svg';
 
-export default function Progressbar(props : {type?: string, value : number, style? : {}, barColor?: string, valueColor?: string, trackColor?: string, strokeWidth? : number, sqSize?: number }) : JSX.Element {
+export default function Progressbar(props : {type?: string, value : number, style? : {}, barColor?: string, valueColor?: string, trackColor?: string, strokeWidth? : number, sqSize?: number, text?: string }) : JSX.Element {
     props.type = props.type ?? 'rectangular'; 
   
     if(props.type == 'rectangular')
@@ -12,7 +12,7 @@ export default function Progressbar(props : {type?: string, value : number, styl
             <View style={[styles.track, { backgroundColor : props.trackColor ?? '#f2f2f2' }]}>
                 <View style={[styles.bar, { backgroundColor: (props.barColor ?? '#fff'), width: (props.value ? props.value+'%' : '0%') as DimensionValue }]}></View>
             </View>
-        <Text>{props.value + '%'}</Text>
+        <Text>{props.text ?? (props.value + '%')}</Text>
         </View>
         )
     }

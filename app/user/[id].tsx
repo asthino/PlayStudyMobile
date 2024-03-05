@@ -7,6 +7,9 @@ import { User } from '../../services/Interfaces';
 import { Entypo } from '@expo/vector-icons';
 import { Text, View } from '../../components/Themed';
 import TopBarCustom from '../../components/TopBarCustom';
+// Remove the import statement for 'StatusBar' from 'expo-status-bar'
+import { StatusBar } from 'expo-status-bar';
+import { statusBarStyles } from '../../constants/Colors';
 
 export default function UserScreen() {
     const params = useLocalSearchParams();
@@ -20,12 +23,15 @@ export default function UserScreen() {
     }, [params.id]);
 
     return (
+      <>
+        <StatusBar style="dark"/>
         <SafeAreaView style={[styles.container, { padding: 0 }]}>
           <TopBarCustom title="Profil" />
           <View style={{flex: 0.9, width: "100%", padding: 0, margin: 0}}>
             <UserProfile user={user} />
           </View>
-        </SafeAreaView>
+        </SafeAreaView> 
+      </>
     );
 }
 

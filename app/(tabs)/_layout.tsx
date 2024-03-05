@@ -1,5 +1,5 @@
 import { FontAwesome5, Entypo } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Tabs, router } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
 import Colors, { statusBarStyles } from '../../constants/Colors';
@@ -64,7 +64,7 @@ export default function TabLayout() {
             bottom: 15
           },
           headerLeft: () => (
-            <Pressable style={{marginHorizontal: 20}}>
+            <Pressable style={{marginHorizontal: 20}} onPress={() => router.push('exercises')}>
               <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
@@ -80,7 +80,7 @@ export default function TabLayout() {
             fontSize: 18
           },
           headerLeft: () => (
-            <Pressable onPress={()=>{}} style={{marginHorizontal: 20}}>
+            <Pressable onPress={()=> router.push('exercises')} style={{marginHorizontal: 20}}>
               <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
@@ -109,12 +109,12 @@ export default function TabLayout() {
             bottom: 15
           },
           headerLeft: () => (
-            <Pressable onPress={()=>{}} style={{alignItems:"center", justifyContent:"center", marginLeft: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
+            <Pressable onPress={()=> router.push('exercises')} style={{alignItems:"center", justifyContent:"center", marginLeft: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
               <Entypo name="chevron-thin-left" color="#263238" size={20}/>
             </Pressable>
           ),
           headerRight: () => (
-            <Pressable onPress={()=>{}} style={{alignItems:"center", justifyContent:"center", marginRight: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
+            <Pressable onPress={()=> router.push('parameter')} style={{alignItems:"center", justifyContent:"center", marginRight: 20, width: 42, height: 42, backgroundColor: "#fff", padding: 5, borderRadius: 12}}>
               <Entypo name="dots-three-vertical" color="#263238" size={20}/>
             </Pressable>
           ),

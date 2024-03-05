@@ -48,6 +48,9 @@ function RootLayoutNav() {
               <Stack.Screen name="register" options={{ headerShown: false }} />
               <Stack.Screen name="user/[id]" options={{ headerShown: false }} />
               <Stack.Screen name="user/message/[id]" options={{ headerShown: false }} />
+              <Stack.Screen name="parameter" options={{ headerShown: false }} />
+              <Stack.Screen name="game/list" options={{ headerShown: false }} />
+              <Stack.Screen name="game/infos" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             </Stack>
         </UsersProvider>

@@ -6,9 +6,10 @@ import { router } from 'expo-router';
 interface TopBarCustomProps {
     title: string;
     type?: 'dark' | 'light';
+    rightButton?: React.ReactNode;
 }
 
-const TopBarCustom: React.FC<TopBarCustomProps> = ({ title, type = 'light' }) => {
+const TopBarCustom: React.FC<TopBarCustomProps> = ({ title, type = 'light', rightButton }) => {
     const handleBackPress = () => {
         router.back();
     };
@@ -23,9 +24,12 @@ const TopBarCustom: React.FC<TopBarCustomProps> = ({ title, type = 'light' }) =>
                 <Entypo name="chevron-thin-left" color="#263238" size={20} />
             </Pressable>
             <Text style={[styles.title, { color: type == 'light' ? "#fff" : '#263238' }]}>{title}</Text>
-            <Pressable onPress={handleMenuPress} style={styles.button}>
-                <Entypo name="dots-three-vertical" color="#263238" size={20} />
-            </Pressable>
+            {rightButton}
+            {!rightButton &&
+                <Pressable onPress={handleMenuPress} style={styles.button}>
+                    <Entypo name="dots-three-vertical" color="#263238" size={20} />
+                </Pressable>
+            }
         </View>
     );
 };

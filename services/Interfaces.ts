@@ -8,6 +8,17 @@ export interface User {
     avatarImage: undefined|ImageSourcePropType
 }
 
+export interface Game {
+    name: string,
+    description: string,
+    color: string,
+    image: undefined|ImageSourcePropType,
+    level: number,
+    exlpaination: string,
+    progress: number,
+    stages: number
+}
+
 export interface ThemeContextType {
     mode: string,
     statusBar: string
