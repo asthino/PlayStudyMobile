@@ -3,6 +3,7 @@ import ProfileForme from '../../assets/images/profile-forme.svg';
 import FontAwesome from '@expo/vector-icons/FontAwesome5';
 import React, { useState } from 'react';
 import AvatarImage from '../../components/AvatarImage';
+import Avatars from '../../constants/Avatars';
 
 export default function ProfilScreen(props : {user? : object}) {
   const [hidePassword, setHidePassWord] = useState<boolean>(true);
@@ -19,7 +20,7 @@ export default function ProfilScreen(props : {user? : object}) {
       </View>
       <View style={{flex:0.4, top: 30}}>
         <View style={styles.avatar}>
-          <AvatarImage size={120} avatarImageSource={avatarImage}/>
+          <AvatarImage size={120} avatarImageSource={Avatars[3]}/>
           <View style={styles.editBtn}>
             <FontAwesome name="pen" size={12} color="#fff"/>
           </View>

@@ -1,48 +1,53 @@
 import React, { Key, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Pressable} from 'react-native';
 import TopBarCustom from '../../components/TopBarCustom';
-import Parchemin from '../../assets/images/parchemin.svg';
+import ChestImage from '../../assets/images/chest.svg';
 import { useUsers } from '../../components/UsersContext';
-import { Game } from '../../services/Interfaces';
+import coinPacks from '../../constants/temp/Store';
+import { Coin, Game } from '../../services/Interfaces';
 import { ScrollView } from 'react-native-gesture-handler';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import CoinStoreItem from '../../components/CoinStoreItem';
 
-const InfoPage: React.FC = () => {
+const StorePage: React.FC = () => {
     const { state, dispatch } = useUsers();
     // const [clickedGame, setClickedGame] = useState<Game | undefined>(undefined);
-    const [gameInfos, setGameInfos] = useState<Array<JSX.Element>>([]);
-    let games = [];
+    const [coinListe, setCoinListe] = useState<Array<JSX.Element>>([]);
+    let coins = [];
     
-    const fetchGames = async () => {
-        games = dispatch();
+    const fetchStore = async () => {
+        dispatch({ type: "STORE_PROCESS_REQUEST"});
+        if(state.store.length > 0) {
+        coins = state.store;
+        }
+        // const response = await fetch('http://localhost:3000/store');
+        const response = { json: () => Promise.resolve(coinPacks) };
+        coins = await response.json();
+        dispatch({ type: "STORE_FETCH", payload: coins });
     }
 
     useEffect(() => {
-        fetchGames();
+        fetchStore();
     }, []);
     
     useEffect(() => {
-        setGameInfos(state.games.map((game: Game, index: Key | null | undefined) => 
-            <View style={styles.gameInfos} key={index}>
-                <Text style={styles.gameInfosText}>Le mode de jeu "{game.name}" consite à {game.exlpaination}</Text>
-            </View>
-        ));
-    }, [state.games]);
+        setCoinListe(state.store.map((coin: Coin, index: Key | null | undefined) => <CoinStoreItem key={index} coin={coin} onPress={() => {}} />));
+    }, [state.store]);
 
     return (
         <>
             <StatusBar style="dark"/>
             <View style={styles.container}>
-                <TopBarCustom title="" rightButton={<></>} />
+                <TopBarCustom title="" />
                 <View style={{ flex: 1, width: '100%' }}>
                     <View style={{flex: 0.4, alignItems: 'center', top: -50}}>
-                        <Parchemin width={300} height={300}/>
-                        <Text style={styles.title}>Explication des modes de jeu</Text>
+                        <ChestImage width={300} height={300}/>
+                        <Text style={styles.title}>Choisis un montant de pièces</Text>
                     </View>
                     <ScrollView style={{flex: 0.6, marginTop: 100}}>
                         <View style={{ flex: 1, padding: 20, gap: 20}}>
-                            {gameInfos}
+                            {coinListe}
                         </View>
                     </ScrollView>
                 </View>
@@ -63,25 +68,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontFamily: 'PopinsMedium'
-    },
-    gameInfos: {
-        backgroundColor: '#3444F1',
-        padding: 20,
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    gameInfosText: {
-        color: '#fff',
-        fontSize: 12,
-        fontFamily: 'PopinsRegular'
     }
 });
 
-export default InfoPage;
+export default StorePage;

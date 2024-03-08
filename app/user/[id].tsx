@@ -24,7 +24,7 @@ export default function UserScreen() {
 
     return (
       <>
-        <StatusBar style="dark"/>
+        <StatusBar style="light"/>
         <SafeAreaView style={[styles.container, { padding: 0 }]}>
           <TopBarCustom title="Profil" />
           <View style={{flex: 0.9, width: "100%", padding: 0, margin: 0}}>

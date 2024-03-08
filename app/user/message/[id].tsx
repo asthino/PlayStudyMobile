@@ -13,12 +13,16 @@ export default function MessageScreen() {
     const { state, dispatch } = useUsers();
     const [user, setUser] = useState<User | undefined>(undefined);
 
+    function handleGoVisio(): void {
+      router.push({ pathname: 'user/visio/' + user?.id });
+    }
+
     const rightButton : React.ReactNode = (
       <View style={{ flexDirection: 'row', backgroundColor: '#fff', gap: 10 }}>
         <Pressable onPress={() => {}}>
             <Feather name="video" color="#263238" size={24} />
         </Pressable>
-        <Pressable onPress={() => {}}>
+        <Pressable onPress={() => handleGoVisio()}>
             <Feather name="phone-call" color="#263238" size={24} />
         </Pressable>
       </View>

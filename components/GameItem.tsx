@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import Progressbar from './Progressbar';
-import { Game } from '../services/Interfaces';
+import { GameItemProps } from '../services/Interfaces';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-interface GameItemProps {
-    game: Game;
-    onPress: () => void;
-}
 
 const GameItem: React.FC<GameItemProps> = ({ game, onPress }) => {
     const GameImage = game.image ? { uri: game.image } : require('../assets/images/fire.png');

@@ -13,6 +13,9 @@ export default function UserProfile({ user }: { user: User | undefined}) {
     function handleGoMessage(): void {
         router.push({ pathname: 'user/message/' + user?.id });
     }
+    function handleGoVisio(): void {
+        router.push({ pathname: 'user/visio/' + user?.id });
+    }
 
     return (
         <ScrollView style={{flex: 1, width: "100%"}}>
@@ -56,7 +59,7 @@ export default function UserProfile({ user }: { user: User | undefined}) {
                                 <Text style={styles.optionText}>Envoyer un message</Text>
                                 <FontAwesome name="chevron-right" size={14} color="#cecece" />
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.optionContainer}>
+                            <TouchableOpacity onPress={() => handleGoVisio()} style={styles.optionContainer}>
                                 <View style={[styles.iconeAction, { backgroundColor: "#1FFF35" }]}>
                                     <FontAwesome name="video" size={24} color="#fff" />
                                 </View>

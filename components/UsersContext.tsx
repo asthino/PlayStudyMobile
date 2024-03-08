@@ -6,6 +6,7 @@ const UsersContext = createContext<any>({});
 const initialState = {
     users: [],
     games: [],
+    store: [],
     isLoading: false,
     error: null,
 };
@@ -57,6 +58,29 @@ const usersReducer = (state: any, action: any) => {
             return {
                 ...state,
                 games: [],
+            };
+        case "STORE_PROCESS_REQUEST":
+            return {
+                ...state,
+                isLoading: true,
+                error: null,
+            };
+        case "STORE_PROCESS_FAILURE":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload,
+            };
+        case "STORE_FETCH":
+            return {
+                ...state,
+                isLoading: false,
+                store: action.payload,
+            };
+        case "STORE_CLEAR":
+            return {
+                ...state,
+                store: [],
             };
         default:
             return state;

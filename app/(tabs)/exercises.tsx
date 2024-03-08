@@ -1,4 +1,4 @@
-import { StyleSheet, View as DefaultView, Text as DefaultText, ScrollView} from 'react-native';
+import { StyleSheet, View as DefaultView, Text as DefaultText, ScrollView, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import Astronot from '../../assets/images/Astronot.svg';
 import Coin from '../../assets/images/Coin.svg';
@@ -9,11 +9,18 @@ import Thematique from '../../components/ThematiqueView';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HistoriqueThematique from '../../components/HistoriqueThematique';
 import DragIndicator from '../../components/DragIndicator';
+import { router } from 'expo-router';
 
 export default function ExercisesSreen() {
   return (
     <View style={styles.container}>
-      <DefaultView style={styles.containerEarning}><View lightColor='#fff' style={styles.earnings}><Coin style={{position: 'absolute', left: -10}}/><Text lightColor='#616161' style={{fontSize: 10}}>150+</Text></View></DefaultView>
+        <DefaultView style={styles.containerEarning}>
+          
+        <TouchableOpacity onPress={() => router.push('game/store')}>
+          <View lightColor='#fff' style={styles.earnings}><Coin style={{position: 'absolute', left: -10}}/><Text lightColor='#616161' style={{fontSize: 10}}>150+</Text></View>
+          </TouchableOpacity>
+        </DefaultView>
+      
       <DefaultView style={styles.upperPart}>
         <DefaultView style={{ width: '60%'}}>
           <DefaultText style={{color: "#fff", fontFamily: 'PopinsMedium', paddingVertical: 20, fontSize:24}}>Bonjour, Asthino</DefaultText>

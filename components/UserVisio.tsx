@@ -1,9 +1,9 @@
 import {View, Text, StyleSheet, ImageSourcePropType, TouchableHighlight} from 'react-native';
 import AvatarImage from './AvatarImage';
-import { User } from '../services/Interfaces';
+import { UserItemProps } from '../services/Interfaces';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default function UserVisio(props: { style?: {}, user: User, onPress?: () => void}) {
+export default function UserVisio(props: UserItemProps) {
     const defaultAvatarImageSource = require('../assets/images/notFoundUserImage.png');
     return (
         <TouchableHighlight onPress={props.onPress} underlayColor="white">

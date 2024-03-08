@@ -29,7 +29,7 @@ export default function VisioScreen() {
   }, []);
   
   useEffect(() => {
-    setUserListe(state.users.map((user: User, index: Key | null | undefined) => <UserVisio key={index} user={user} onPress={() => setClickedUser(user)} />));
+    setUserListe(state.users.map((user: User, index: Key | null | undefined) => <UserVisio key={index} user={user} onPress={() => setClickedUser(user)} style={undefined} />));
   }, [state.users]);
 
   useEffect(() => {
