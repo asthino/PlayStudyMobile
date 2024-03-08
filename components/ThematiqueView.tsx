@@ -16,13 +16,14 @@ export default function Thematique(props: { title : string, style?: {},  progres
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%', 
+    width: '100%',
+    height: 76,
     flexDirection: 'row', 
     alignItems:'center', 
     justifyContent:'space-between',
     borderRadius: 12,
     padding: 15,
-    shadowColor: 'rgba(38, 50, 56, 0.15)',
+    shadowColor: 'rgba(38, 50, 56, 0.25)',
     shadowOffset: { width: 0, height: 8},
     shadowRadius: 0,
     elevation: 4,

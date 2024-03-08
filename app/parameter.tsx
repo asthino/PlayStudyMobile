@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import TopBarCustom from '../components/TopBarCustom';
 import { Entypo } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 const ParameterPage: React.FC = () => {
     return (
         <View style={styles.container}>
+            <StatusBar style="dark" />
             <TopBarCustom title="Paramètres" type='dark' />
             <View style={{flex: 0.9, paddingHorizontal: 20}}>
                 <View style={styles.section}>

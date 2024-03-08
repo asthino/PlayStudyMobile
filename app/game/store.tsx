@@ -45,7 +45,7 @@ const StorePage: React.FC = () => {
                         <ChestImage width={300} height={300}/>
                         <Text style={styles.title}>Choisis un montant de pièces</Text>
                     </View>
-                    <ScrollView style={{flex: 0.6, marginTop: 100}}>
+                    <ScrollView style={{flex: 0.6, marginTop: 100}} showsVerticalScrollIndicator={false}>
                         <View style={{ flex: 1, padding: 20, gap: 20}}>
                             {coinListe}
                         </View>

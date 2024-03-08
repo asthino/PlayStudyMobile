@@ -10,8 +10,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import HistoriqueThematique from '../../components/HistoriqueThematique';
 import DragIndicator from '../../components/DragIndicator';
 import { router } from 'expo-router';
+import { useUsers } from '../../components/UsersContext';
 
 export default function ExercisesSreen() {
+  const { state, dispatch } = useUsers();
   return (
     <View style={styles.container}>
         <DefaultView style={styles.containerEarning}>
@@ -23,7 +25,7 @@ export default function ExercisesSreen() {
       
       <DefaultView style={styles.upperPart}>
         <DefaultView style={{ width: '60%'}}>
-          <DefaultText style={{color: "#fff", fontFamily: 'PopinsMedium', paddingVertical: 20, fontSize:24}}>Bonjour, Asthino</DefaultText>
+          <DefaultText style={{color: "#fff", fontFamily: 'PopinsMedium', paddingVertical: 20, fontSize:24}}>Bonjour, { state.user?.name ?? 'Asthino' }</DefaultText>
           <DefaultText style={{color: "#fff", fontSize:13, fontFamily: 'PopinsRegular'}}>Quelle thématique aimerais-tu choisir ?</DefaultText>
         </DefaultView>
         <Astronot />
@@ -38,7 +40,7 @@ export default function ExercisesSreen() {
             <HistoriqueThematique title='Marketing' level={2} lastExercise={1} style={{backgroundColor: '#3444F1'}} />
           </ScrollView>
         </SafeAreaView>
-        <View lightColor='#fff'style={{marginTop: -10, padding: 0, gap: 5}}>
+        <View lightColor='#fff'style={{marginTop: -10, padding: 0, gap: 20}}>
           <Thematique title='Musique' icon={<Guitar/>} progress={80} />
           <Thematique title='Marketing' icon={<Camembert/>} progress={50} />
           <Thematique title='Art & Design' icon={<Art/>} progress={30} />

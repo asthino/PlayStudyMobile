@@ -1,5 +1,5 @@
 import { View as DefaultView, Text, StyleSheet } from 'react-native'
-import Amico from '../assets/images/amico.svg'
+import Amico from '../../assets/images/amico.svg'
 import { Link } from 'expo-router';
 
 export default function register() {
@@ -16,14 +16,13 @@ export default function register() {
             <Link href='' style={styles.buttonBack}>
                 <Text style={{color: '#989EA7'}}>Retour</Text>
             </Link>
-            <Link href='' style={styles.register}>
+            <Link href="register/avatar" style={styles.register}>
                 <Text style={{color: '#fff'}} >S'inscrire</Text>
             </Link>
         </DefaultView>
     </DefaultView>
   )
 }
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,

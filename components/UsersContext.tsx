@@ -4,6 +4,7 @@ import { createContext, useContext, useReducer } from "react";
 const UsersContext = createContext<any>({});
 
 const initialState = {
+    user: {},
     users: [],
     games: [],
     store: [],
@@ -81,6 +82,29 @@ const usersReducer = (state: any, action: any) => {
             return {
                 ...state,
                 store: [],
+            };
+        case "USER_PROCESS_REQUEST":
+            return {
+                ...state,
+                isLoading: true,
+                error: null,
+            };
+        case "USER_PROCESS_FAILURE":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload,
+            };
+        case "USER_FETCH":
+            return {
+                ...state,
+                isLoading: false,
+                user: action.payload,
+            };
+        case "USER_CLEAR":
+            return {
+                ...state,
+                user: {},
             };
         default:
             return state;

@@ -52,7 +52,6 @@ export function StatusBar(props: {style?: StatusBarStyle, updater?: any}) {
   const [mode, setMode] = useState<StatusBarStyle|undefined>("dark" as StatusBarStyle);
   useEffect(() => {
     setMode(props?.style);
-    console.log(props.updater);
     return;
   }, [props.updater]);
   return <DefaultStatusBar style={mode} />

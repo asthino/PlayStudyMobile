@@ -45,7 +45,12 @@ function RootLayoutNav() {
         <UsersProvider>
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="register" options={{ headerShown: false }} />
+              <Stack.Screen name="register/index" options={{ headerShown: false }} />
+              <Stack.Screen name="register/avatar" options={{ headerShown: false }} />
+              <Stack.Screen name="register/age" options={{ headerShown: false }} />
+              <Stack.Screen name="register/name" options={{ headerShown: false }} />
+              <Stack.Screen name="register/email" options={{ headerShown: false }} />
+              <Stack.Screen name="register/pass" options={{ headerShown: false }} />
               <Stack.Screen name="user/[id]" options={{ headerShown: false }} />
               <Stack.Screen name="user/message/[id]" options={{ headerShown: false }} />
               <Stack.Screen name="user/visio/[id]" options={{ headerShown: false }} />
